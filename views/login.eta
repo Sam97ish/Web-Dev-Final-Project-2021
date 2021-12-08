@@ -1,0 +1,15 @@
+<% layout("./layouts/layout.eta") %>
+<h1> Login Here! </h1>
+<% if (it.error) { %>
+<ul style="color: red">
+    Wrong email or password. Please retry.
+</ul>
+<% } %>
+<form method="POST" action="/auth/login">
+  Email:<br/>
+  <input type="email" name="email" /><br/>
+  Password:<br/>
+  <input type="password" name="password" /><br/>
+  <input type="submit" value="Login!" />
+</form>
+<p>Haven't yet registered? <a href="/auth/register">Register here!</a></p>

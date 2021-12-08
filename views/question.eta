@@ -1,0 +1,50 @@
+<% layout("./layouts/layout.eta") %>
+
+<h1> <%= it.title %> </h1>
+<p> <%= it.question_text %> </p>
+
+<% if(it.options.length == 0) { %>
+<form method="POST" action="/questions/<%= it.id %>/delete">
+    <input type="submit" value="Delete Question!"/>
+</form>
+<% } %>
+
+<h2> Answer Options </h2>
+<% if (it.options && it.options.length > 0) { %>
+<p> Delete all answers first, if you want to delete the question! </p>
+<ul>
+<% it.options.forEach(option => { %>
+  <li>
+     <%= option.option_text %>
+     <%= option.is_correct ? "Correct Answer" : "Wrong"%>
+     <form method="POST" action="/questions/<%= it.id %>/options/<%= option.id %>/delete">
+     <input type="submit" value="Delete Answer!"/>
+     </form>
+  </li>
+<% }); %>
+</ul>
+
+<% } else { %>
+
+<p> No answer options available. Please Add some. </p>
+
+<% } %>
+
+<h2> Add a new answer option </h2>
+<% if (it.errors) { %>
+<ul>
+    <% Object.keys(it.errors).forEach((attribute) => { %>
+        <% Object.values(it.errors[attribute]).forEach((err) => { %>
+            <li><%= err %></li>
+        <% }); %>
+    <% }); %>
+</ul>
+<% } %>
+<form method="POST" action="/questions/<%= it.id %>/options">
+Answer Option Text:<br/>
+<textarea name="option_text"><%= it.option_text ? it.option_text : "" %></textarea><br/>
+Is The answer Correct?:<br/>
+<input type="checkbox" name="is_correct"/><br/>
+<input type="submit" value="Add Answer!"/>
+</form>
+<p>Back to Questions: <a href="/questions">Questions</a></p>

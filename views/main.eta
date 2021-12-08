@@ -1,0 +1,7 @@
+<% layout("./layouts/layout.eta") %>
+
+<h1>Web Dev final project!</h1>
+<p> Welcome! This is the final project for the Web Development course. </p>
+<p> This is a web application where you can add, view, delete and answer questions and quizzes! </p>
+<p> If you are new here you can <a href="/auth/register">Register</a>.
+If you already have have an account you can <a href="/auth/login">Login</a>. </p>
