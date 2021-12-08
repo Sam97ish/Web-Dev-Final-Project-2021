@@ -122,6 +122,20 @@ const listQuestionAnswerOption = async (question_id) =>{
 };
 
 /**
+ * List all question options for a given question without leaking answer.
+ * @param {*} question_id
+ * @returns List of question_answer_options: id, question_id, option_text, is_correct. 
+ */
+ const listQuestionAnswerOptionAPI = async (question_id) =>{
+  const result = await executeQuery(
+    `SELECT id, question_id, option_text FROM question_answer_options WHERE question_id = $1;`,
+    question_id,
+  );
+  return result.rows;
+};
+
+
+/**
  * Deletes a question answer option from both answers table and options table.
  * @param {*} option_id 
  */
@@ -149,5 +163,6 @@ export {
   deleteQuestion, 
   deleteQuestionAnswerOption, 
   getQuestion, 
-  getQuestionForUser 
+  getQuestionForUser,
+  listQuestionAnswerOptionAPI, 
 };

@@ -2,13 +2,11 @@
 
 <h1> <%= it.title %> </h1>
 <p> <%= it.question_text %> </p>
-
 <% if(it.options.length == 0) { %>
 <form method="POST" action="/questions/<%= it.id %>/delete">
     <input type="submit" value="Delete Question!"/>
 </form>
 <% } %>
-
 <h2> Answer Options </h2>
 <% if (it.options && it.options.length > 0) { %>
 <p> Delete all answers first, if you want to delete the question! </p>
@@ -23,13 +21,9 @@
   </li>
 <% }); %>
 </ul>
-
 <% } else { %>
-
 <p> No answer options available. Please Add some. </p>
-
 <% } %>
-
 <h2> Add a new answer option </h2>
 <% if (it.errors) { %>
 <ul>

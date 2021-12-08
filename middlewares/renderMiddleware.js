@@ -6,6 +6,9 @@ const render = async (context, next) => {
   });
 
   context.render = async (file, data) => {
+    if(context.currentUser){
+      data.currentUser = context.currentUser;
+    }
     context.response.headers.set("Content-Type", "text/html; charset=utf-8");
     context.response.body = await renderFile(file, data);
   };

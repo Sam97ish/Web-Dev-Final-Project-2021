@@ -1,4 +1,5 @@
 <% layout("./layouts/layout.eta") %>
+
 <h1> Register for our amazing App </h1>
 <% if (it.errors) { %>
 <ul>
