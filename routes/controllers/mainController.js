@@ -1,5 +1,5 @@
 const showMain = ({ render }) => {
-  render("main.eta");
+  render("./partials/main.eta");
 };
 
 export { showMain };

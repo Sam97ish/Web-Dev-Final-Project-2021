@@ -37,7 +37,7 @@ const registerUser = async ({ request, response, render })=> {
     if(!passes){
         console.log("# Validation Error while registering user, errors: " + errors);
         registration_input.errors = errors;
-        render("registration.eta", registration_input);
+        render("./partials/register.eta", registration_input);
     }else{
         // Data is valid.
         await userService.addUser(registration_input.email, await bcrypt.hash(registration_input.password));
@@ -50,7 +50,7 @@ const registerUser = async ({ request, response, render })=> {
  * @param {*} param0 
  */
 const renderRegistration = ( { render }) =>{
-    render("registration.eta");
+    render("./partials/register.eta");
 };
 
 export {

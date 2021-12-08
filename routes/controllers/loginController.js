@@ -20,7 +20,7 @@ import { bcrypt } from "../../deps.js";
  * @param {*} param0 
  */
 const renderLogin = ( {render} ) => {
-    render("login.eta");
+    render("./partials/login.eta");
 };
 
 const processLogin = async ({request, response, render, state}) => {
@@ -32,7 +32,7 @@ const processLogin = async ({request, response, render, state}) => {
     if(login_user === null){
         // User was not found.
         console.log("# User was not found. User: " + login_input.email);
-        render("login.eta", {error: true});
+        render("./partials/login.eta", {error: true});
         return;
     }
 
@@ -40,7 +40,7 @@ const processLogin = async ({request, response, render, state}) => {
 
     if(!checkPass){
         console.log("# Pass is wrong. User: " + login_input.email);
-        render("login.eta", { error: true });
+        render("./partials/login.eta", { error: true });
         return;
     }
 

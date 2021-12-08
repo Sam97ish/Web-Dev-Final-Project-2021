@@ -38,7 +38,7 @@ const addQuestion = async ({ request, response, render, currentUser }) => {
   if(!passes){
     console.log("# Question input validation errors: " + JSON.stringify(errors));
     question_input.errors = errors;
-    render("questions.eta", {...question_input, questions: await questionService.listQuestions(currentUser.id)});
+    render("./partials/questions.eta", {...question_input, questions: await questionService.listQuestions(currentUser.id)});
   }else{
     // Add question to DB.
     await questionService.addQuestion(
@@ -56,7 +56,7 @@ const addQuestion = async ({ request, response, render, currentUser }) => {
  * @param {*} param0 
  */
 const listQuestions = async ({render, currentUser}) => {
-  render("questions.eta", { questions: await questionService.listQuestions(currentUser.id)});
+  render("./partials/questions.eta", { questions: await questionService.listQuestions(currentUser.id)});
 };
 
 /**
@@ -76,7 +76,7 @@ const getQuestionForCurrentUser = async ({render, params, response, currentUser}
   // Get answer options to render.
   const options = await questionService.listQuestionAnswerOption(question.id);
 
-  render("question.eta", {
+  render("./partials/question.eta", {
     id: question.id,
     user_id: question.user_id,
     title: question.title,
@@ -144,7 +144,7 @@ const addQuestionAnswerOption = async ( {request, response, render, params, curr
     // Get answer options to render.
     const options = await questionService.listQuestionAnswerOption(question.id);
     
-    render("question.eta", {
+    render("./partials/question.eta", {
       id: question.id,
       user_id: question.user_id,
       title: question.title,
