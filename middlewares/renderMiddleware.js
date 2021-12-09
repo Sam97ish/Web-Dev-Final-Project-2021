@@ -6,6 +6,10 @@ const render = async (context, next) => {
   });
 
   context.render = async (file, data) => {
+    if(!data){
+      data ={}; // Without this we get this 
+      //error: Uncaught (in promise) TypeError: Cannot set properties of undefined (setting 'currentUser') data.currentUser = context.currentUser;
+    }
     if(context.currentUser){
       data.currentUser = context.currentUser;
     }

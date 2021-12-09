@@ -1,8 +1,8 @@
 <% layout("./layouts/layout.eta") %>
 
 <h1>Statistics!</h1>
-<h2>Total Questions Answered: <%= it.total %></h2>
-<h2>Total Questions Answered Correctly: <%= it.correct %></h2>
+<h2>Total Questions You Have Answered: <%= it.total %></h2>
+<h2>Total Questions You Have Answered Correctly: <%= it.correct %></h2>
 <h1>Top five users!</h1>
 <ul>
 <% it.top.forEach(user => { %>

@@ -22,7 +22,7 @@ const getTopFiveUsers = async () => {
         `SELECT users.email as email, COUNT(*) as total FROM users
         JOIN question_answers ON users.id = question_answers.user_id
         GROUP BY users.email
-        ORDER BY total
+        ORDER BY total DESC
         LIMIT 5`,
     );
     return result.rows;

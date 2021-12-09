@@ -69,7 +69,8 @@ const getQuestionForCurrentUser = async ({render, params, response, currentUser}
 
   if(!question){
     console.log("# Question was not Found! question_id: " + params.id);
-    response.status = 404;
+    response.status = 404; // Not unauthorized so that we don't leak the existence of a question.
+    response.body = {message : "Question was not found or it does not belong to you."};
     return;
   }
 
