@@ -13,11 +13,17 @@ const getRandomQuestion = async ({response}) => {
         if(answer_options.length > 0){
             //build body and send as json.
             reply = {
-                question_id: question.id,
-                question_title: question.question_title,
-                question_text: question.question_text,
-                answer_options: answer_options,
+                questionId: question.id,
+                questionTitle: question.title,
+                questionText: question.question_text,
+                answerOptions: [],
             };
+            for (const opt of answer_options) {
+                reply.answerOptions.push({
+                  optionId: opt.id,
+                  optionText: opt.option_text,
+                });
+            }
         }
     }
     response.body = reply;
@@ -26,7 +32,7 @@ const getRandomQuestion = async ({response}) => {
 /**
  * API response for an answer.
  * @param {*} param0
- * @returns null if answer is wrong or true if correct. 
+ * @returns
  */
 const answerQuestion = async ({request, response})=>{
     const body = request.body({ type: "json" });

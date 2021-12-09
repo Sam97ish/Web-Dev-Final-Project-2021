@@ -112,7 +112,7 @@ const questionOptionsInputValidationRules ={
 
   return{
     option_text: params.get("option_text"),
-    is_correct: params.get("is_correct"),
+    is_correct: params.has("is_correct") || false,
   };
 };
 

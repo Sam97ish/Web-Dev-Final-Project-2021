@@ -38,7 +38,7 @@
 Answer Option Text:<br/>
 <textarea name="option_text"><%= it.option_text ? it.option_text : "" %></textarea><br/>
 Is The answer Correct?:<br/>
-<input type="checkbox" name="is_correct"/><br/>
+<input type="checkbox" name="is_correct" value="<%= it.is_correct ? it.is_correct : false %>"/><br/>
 <input type="submit" value="Add Answer!"/>
 </form>
 <p>Back to Questions: <a href="/questions">Questions</a></p>

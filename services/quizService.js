@@ -54,7 +54,7 @@ const getCorrectAnswer = async (question_id) => {
  * Checks if the chosen answer is correct.
  * @param {*} question_id 
  * @param {*} option_id 
- * @returns is_correct: True or Null.
+ * @returns is_correct: True or false.
  */
 const isCorrectAnswer = async (question_id, option_id) => {
     const result = await executeQuery(
@@ -63,9 +63,9 @@ const isCorrectAnswer = async (question_id, option_id) => {
         option_id,
     );
     if(result.rows && result.rows.length > 0){
-        return result.rows[0];
+        return result.rows[0].is_correct;
       }else{
-        return null;
+        return false;
     }
 }
 
