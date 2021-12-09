@@ -62,7 +62,7 @@ const isCorrectAnswer = async (question_id, option_id) => {
         question_id,
         option_id,
     );
-    if(result.rows && result.rows.length > 0){
+    if(result.rows.length > 0){
         return result.rows[0].is_correct;
       }else{
         return false;

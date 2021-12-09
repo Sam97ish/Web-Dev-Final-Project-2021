@@ -39,7 +39,7 @@ const answerQuestion = async ({request, response})=>{
     const params = await body.value;
 
     response.body = {
-        correct: await quizService.isCorrectAnswer(params.question_id, params.option_id),
+        correct: await quizService.isCorrectAnswer(params.questionId, params.optionId),
     };
 };
 

@@ -21,7 +21,7 @@ const getRandomQuestion = async ({response, render}) =>{
  */
 const answerQuiz = async ({response, params, currentUser}) =>{
     const is_correct = await quizService.isCorrectAnswer(params.question_id, params.option_id);
-    await quizService.storeAnswer(currentUser.id, params.question_id, params.option_id, is_correct.is_correct);
+    await quizService.storeAnswer(currentUser.id, params.question_id, params.option_id, is_correct);
 
     if(is_correct){
         response.redirect("/quiz/"+params.question_id+"/correct");
